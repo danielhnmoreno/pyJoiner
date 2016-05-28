@@ -12,7 +12,8 @@
 # The output py_file.exe file must be execute under Windows platform.
 # 
 #
-# Usage: python3.4 pyJoiner.py
+# Usage: 
+# root@kali# python3.4 pyJoiner.py
 
 import os, sys, urllib.request
 
