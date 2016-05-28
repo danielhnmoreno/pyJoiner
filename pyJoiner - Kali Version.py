@@ -4,7 +4,7 @@
 # Open Source Exe Joiner
 # Coder: Daniel Henrique Negri Moreno (a.k.a W1ckerMan)
 #
-# pyJoiner is used for join files, similar SFX, but the major difference
+# pyJoiner is used for join files, similar with SFX (Self-extracting archive), but the major difference
 # is that pyJoiner silenty extracts joined files in %TEMP% directory and
 # execute them.
 # 
