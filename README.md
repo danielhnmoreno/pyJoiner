@@ -1,5 +1,5 @@
 
-pyJoiner - Open Source Exe Joiner (Kali Linux Version).
+pyJoiner - Open Source Exe Joiner (Trojan Maker)
 
 pyJoiner is used for join files , like Self -extracting archive ( SFX ) .
 The major difference resides in fact that pyJoiner extracts files in %TEMP% Windows directory and executes them.
@@ -13,4 +13,4 @@ The output "py_file.exe" file must be execute under Windows platform.
 
 Usage: 
 
-root@kali# python3.4 pyJoiner.py
+python3.4 pyJoiner.py
