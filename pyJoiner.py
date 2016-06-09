@@ -73,7 +73,7 @@ def banner():
 #                                                                        # 
 # How to use pyJoiner?                                                   #
 #                                                                        #
-# e.g: "game.exe" is your first file. Please type "game.exe" when         #
+# e.g: "game.exe" is your first file. Please type "game.exe" when        #
 # pyJoiner ask you "1st file: "                                          #
 # "backdoor.exe" is your second file. Please type "backdoor.exe" when    #
 # pyJoiner ask you "2nd file: "                                          #
