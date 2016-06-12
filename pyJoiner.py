@@ -1,4 +1,3 @@
-#!/usr/bin/env python3.4
 #
 # pyJoiner - Kali Linux Version
 # Open Source Exe Joiner
