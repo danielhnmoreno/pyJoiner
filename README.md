@@ -5,11 +5,10 @@ The major difference resides in fact that pyJoiner extracts files in %TEMP% Wind
 
 After process, "/root/pyJoiner_output/py_file.exe" will be generated. 
 
-The output "py_file.exe" file must be execute under Windows platform.
+* The output "py_file.exe" file must be execute under Windows platform.
 
  
-
-Usage: 
+* Usage: 
 
 root@kali# python pyJoiner.py
 
