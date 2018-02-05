@@ -11,4 +11,6 @@ The output "py_file.exe" file must be execute under Windows platform.
 
 Usage: 
 
-root@kali# python3.4 pyJoiner.py
+root@kali# python pyJoiner.py
+
+* pyJoiner is only for Kali Linux i386
